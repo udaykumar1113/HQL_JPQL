@@ -20,18 +20,21 @@ public class HQLQueryUsage {
 
         org.hibernate.Transaction hibernateTransaction=session.beginTransaction();
 
+        Account account=new Account();
+        account.setTotalBalance(10000);
+
         Transaction transaction_1=new Transaction();
         transaction_1.setTransactionAmount(100);
         transaction_1.setPurchaseName("BOOK PURCHASE");
         transaction_1.setTransactionDate(new Date());
+        transaction_1.setAccount(account);
 
         Transaction transaction_2=new Transaction();
         transaction_2.setPurchaseName("LAPTOP PURCHASE");
         transaction_2.setTransactionAmount(1200);
         transaction_2.setTransactionDate(new Date());
+        transaction_2.setAccount(account);
 
-        Account account=new Account();
-        account.setTotalBalance(10000);
         account.getTransactionList().add(transaction_1);
         account.getTransactionList().add(transaction_2);
 

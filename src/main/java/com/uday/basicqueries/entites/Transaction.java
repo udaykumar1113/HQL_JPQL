@@ -12,7 +12,7 @@ public class Transaction {
     private int transactionId;
 
     @ManyToOne
-    @JoinColumn(name="accountId")
+    @JoinColumn(name="accountId", referencedColumnName = "accountId")
     private Account account;
 
     private float transactionAmount;
