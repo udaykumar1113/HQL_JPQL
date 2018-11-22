@@ -5,6 +5,14 @@ import java.util.Date;
 
 @Entity
 @Table(name="TRANSACTION")
+@NamedQueries(
+        {
+                @NamedQuery(name="Transaction.allTransactions",
+                        query = "select t from Transaction t " +
+                                "where t.purchaseName like '%BOOK%' " +
+                                "and t.transactionAmount < 500")
+        }
+)
 public class Transaction {
 
     @Id
