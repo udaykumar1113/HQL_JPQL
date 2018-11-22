@@ -8,14 +8,14 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class HQLPositionalParameterUsage {
+public class HQLNamedParameterUsage {
     public static void main(String args[]){
         SessionFactory sessionFactory= ConnectionFactory.getSessionFactory();
         Session session=sessionFactory.openSession();
 
         Query query=session.createQuery("select t from Transaction t where "+
-                "t.purchaseName like '%BOOK%' and t.transactionAmount < ?");
-        query.setParameter(0,500f);
+                "t.purchaseName like '%BOOK%' and t.transactionAmount < :amount");
+        query.setParameter("amount",500f);
 
         List<Transaction> transactionList=query.list();
 
